@@ -5,6 +5,7 @@ import numpy as np
 from collections import Counter, OrderedDict
 from env.tasks import get_task
 from ai2thor.controller import Controller
+from ai2thor.platform import CloudRendering
 import gen.utils.image_util as image_util
 from gen.utils import game_util
 from gen.utils.game_util import get_objects_of_type, get_obj_of_type_closest_to_obj
@@ -26,11 +27,11 @@ class ThorEnv(Controller):
                  quality='MediumCloseFitShadows',
                  build_path=constants.BUILD_PATH):
 
-        super().__init__(quality=quality)
+        super().__init__(quality=quality, platform=CloudRendering)
         self.local_executable_path = build_path
-        self.start(x_display=x_display,
-                   player_screen_height=player_screen_height,
-                   player_screen_width=player_screen_width)
+        # self.start(x_display=x_display,
+        #            player_screen_height=player_screen_height,
+        #            player_screen_width=player_screen_width)
         self.task = None
 
         # internal states
